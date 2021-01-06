@@ -50,7 +50,11 @@ elif [ $STACK == "heroku-16" ]; then
    	fi
 else
 	if [ $PROJECT_VERSION == "netcoreapp2.1" ]; then
-		apt_install libicu60 openssl1.0
+		if [ $STACK == "heroku-20" ]; then
+			apt_install libicu65 libssl1.1
+		else
+			apt_install libicu60 openssl1.0
+		fi
    	else
    		apt_install libunwind8 libicu60 openssl1.0
    	fi
